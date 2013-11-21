@@ -1,0 +1,29 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="com.polyvi.xface.lib.plugin.player"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        version="1.0.0">
+
+    <name>Player</name>
+    <author>PolyVi Inc.</author>
+    <description>xFace Player Plugin</description>
+    <license>GPLv3</license>
+    <keywords>xface,player</keywords>
+
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <preference name="UsePlayerMode" value="true" />
+        </config-file>
+        <config-file target="*-Info.plist" parent="UIFileSharingEnabled">
+            <true/>
+        </config-file>
+        <header-file src="src/ios/XPlayerSystemBootstrap_Privates.h" />
+        <header-file src="src/ios/XPlayerSystemBootstrap.h" />
+        <source-file src="src/ios/XPlayerSystemBootstrap.m" />
+        <header-file src="src/ios/XSync.h" />
+        <source-file src="src/ios/XSync.m" />
+        <source-file src="src/ios/XSystemBootstrapFactory+XPlayer.m" />
+    </platform>
+</plugin>
