@@ -16,14 +16,9 @@
         <config-file target="config.xml" parent="/*">
             <preference name="UsePlayerMode" value="true" />
         </config-file>
-        <config-file target="*-Info.plist" parent="UIFileSharingEnabled">
-            <true/>
-        </config-file>
         <header-file src="src/ios/XPlayerSystemBootstrap_Privates.h" />
         <header-file src="src/ios/XPlayerSystemBootstrap.h" />
         <source-file src="src/ios/XPlayerSystemBootstrap.m" />
-        <header-file src="src/ios/XSync.h" />
-        <source-file src="src/ios/XSync.m" />
         <source-file src="src/ios/XSystemBootstrapFactory+XPlayer.m" />
     </platform>
 </plugin>

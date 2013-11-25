@@ -27,21 +27,6 @@
 @interface XPlayerSystemBootstrap()
 
 /**
-	部署资源.
-	将预置资源包（配置文件，预置应用）解压到工作空间下.
-	@returns 成功返回YES,失败返回NO
- */
-- (BOOL) deployResources;
-
-/**
-    递归拷贝srcPath下的user data到dest path下
-    @param srcPath 待拷贝user data所在源路径
-    @param destPath user data目的路径
-    @returns 成功时返回YES，否则返回NO
- */
-- (BOOL) copyUserDataRecursivelyAtPath:(NSString *)srcPath toPath:(NSString *)destPath;
-
-/**
     创建默认启动的应用
     先尝试读取 default app根目录的app.xml, 如果有该文件就读取app info, 没有就创建默认的app info
     @returns 默认启动应用的实例

@@ -21,14 +21,10 @@
 */
 
 #import <xFace/XSystemBootstrap.h>
-#import "XSync.h"
 
 /**
    在player模式下的系统启动
  */
-@interface XPlayerSystemBootstrap : NSObject <XSystemBootstrap, XSyncDelegate>
-{
-    NSString *_defaultAppSrcRoot;
-}
+@interface XPlayerSystemBootstrap : NSObject <XSystemBootstrap>
 
 @end
