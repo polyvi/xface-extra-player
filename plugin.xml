@@ -23,4 +23,9 @@
         <source-file src="src/ios/XSystemWorkspaceFactory+XPlayer.m" />
         <source-file src="src/ios/XVersionLableFactory+XPlayer.m" />
     </platform>
+
+    <!-- wp8 -->
+    <platform name="wp8">
+        <source-file src="src/wp/XPlayerSystemBootstrap.cs" />
+    </platform>
 </plugin>
