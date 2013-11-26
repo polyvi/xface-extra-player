@@ -20,18 +20,25 @@
  under the License.
 */
 
-#import <xFace/XSystemBootstrapFactory.h>
-#import <xFace/XSystemBootstrap.h>
-#import "XPlayerSystemBootstrap.h"
+//
+//  XSystemWorkspaceFactory.m
+//  xFace
+//
+//
 
-@implementation XSystemBootstrapFactory (XPlayer)
+#import <xFace/XSystemWorkspaceFactory.h>
+#import <xFace/XConstants.h>
 
-+ (id <XSystemBootstrap>)createWithDelegate:(id <XSystemBootstrapDelegate>)delegate
+@implementation XSystemWorkspaceFactory (XPlayer)
+
++ (NSString *)create
 {
-    id<XSystemBootstrap> systemBootstrap = [[XPlayerSystemBootstrap alloc] init];
-    [systemBootstrap setBootDelegate:delegate];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [paths objectAtIndex:0];
 
-    return systemBootstrap;
+    // 区别player与非player的系统工作空间，以隔离相关配置，避免互相覆盖数据，影响程序正常运行
+    // player的系统工作空间路径形如：<Applilcation_Home>/Documents/xface_player/
+    return [documentDirectory stringByAppendingFormat:@"%@%@%@", FILE_SEPARATOR, XFACE_PLAYER_WORKSPACE, FILE_SEPARATOR];
 }
 
 @end
