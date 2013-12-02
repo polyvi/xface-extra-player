@@ -28,4 +28,11 @@
     <platform name="wp8">
         <source-file src="src/wp/XPlayerSystemBootstrap.cs" />
     </platform>
+
+    <!-- android -->
+    <platform name="android">
+        <root-activity name="com.polyvi.xface.player.XPlayerActivity"/>
+        <source-file src="src/android/XPlayerActivity.java" target-dir="src/com/polyvi/xface/player"/>
+        <source-file src="src/android/XPlayerSystemBootstrap.java" target-dir="src/com/polyvi/xface/player"/>
+    </platform>
 </plugin>
