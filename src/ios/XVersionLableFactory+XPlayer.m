@@ -37,7 +37,6 @@
 
 @implementation XVersionLableFactory (XPlayer)
 
-//TODO:实现在splash上显示version等信息
 + (id) createWithFrame:(CGRect)frame
 {
     //version label 显示在xface logo的正下方
