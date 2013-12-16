@@ -26,7 +26,7 @@ import java.io.File;
 import android.graphics.Color;
 import android.util.DisplayMetrics;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.polyvi.xface.XFaceMainActivity;
@@ -87,13 +87,19 @@ public class XPlayerActivity extends XFaceMainActivity {
         return null;
     }
 
+    @Override
+    protected void startSplashScreen() {
+        createVersionTextView();
+        super.startSplashScreen();
+    }
+
     /**
      * 生成显示版本号的textView和布局
      *
      */
     private void createVersionTextView() {
         mVersionText = new TextView(this);
-        mVersionParams = new RelativeLayout.LayoutParams(
+        mVersionParams = new LinearLayout.LayoutParams(
                 LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
