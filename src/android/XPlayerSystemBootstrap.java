@@ -37,7 +37,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import android.content.Context;
-
 import com.polyvi.xface.XFaceMainActivity;
 import com.polyvi.xface.XSystemBootstrap;
 import com.polyvi.xface.ams.XAMSComponent;
@@ -65,11 +64,11 @@ public class XPlayerSystemBootstrap implements XSystemBootstrap {
 
     private static final String INDEX_HTML_DIR_NAME = "index.html";
 
-    private XFaceMainActivity mContext;
+    private XFaceMainActivity mActivity;
     private String mHostIp;
 
-    public XPlayerSystemBootstrap(XFaceMainActivity context) {
-        mContext = context;
+    public XPlayerSystemBootstrap(XFaceMainActivity activity) {
+        mActivity = activity;
     }
 
     @Override
@@ -91,7 +90,7 @@ public class XPlayerSystemBootstrap implements XSystemBootstrap {
             return;
         }
         // 如果本地app不存在,则设置默认的显示页面，防止应用停止到splash界面
-        copyAssetsToTargetPath(mContext, INDEX_HTML_DIR_NAME, indexPath);
+        copyAssetsToTargetPath(mActivity, INDEX_HTML_DIR_NAME, indexPath);
     }
 
     /**
@@ -154,8 +153,8 @@ public class XPlayerSystemBootstrap implements XSystemBootstrap {
      * @return
      */
     private XAMSComponent createAMSComponent() {
-        XAMSComponent amsCom = new XAMSComponent(mContext,
-                mContext.getAppFactory());
+        XAMSComponent amsCom = new XAMSComponent(mActivity,
+                mActivity.getAppFactory());
         return amsCom;
     }
 
@@ -168,18 +167,17 @@ public class XPlayerSystemBootstrap implements XSystemBootstrap {
         new Thread() {
             @Override
             public void run() {
-                handlePresetAppPackage(mContext.getStartApp().getWorkSpace());
+                handlePresetAppPackage(mActivity.getStartApp().getWorkSpace());
                 File appDir = new File(XConfiguration.getInstance()
                         .getAppInstallDir(), TAG_START_APP_ID);
-                XFileUtils.copyEmbeddedJsFile(mContext,
-                        appDir.getAbsolutePath());
+                copyJsFileToPlayer(appDir.getAbsolutePath());
                 XFileUtils.createNoMediaFileInWorkDir();
                 configStartApp();
-                mContext.runOnUiThread(new Runnable() {
+                mActivity.runOnUiThread(new Runnable() {
                     public void run() {
-                        mContext.runStartApp();
+                        mActivity.runStartApp();
                         XAMSComponent ams = createAMSComponent();
-                        ams.markPortal(mContext.getStartApp());
+                        ams.markPortal(mActivity.getStartApp());
                     }
                 });
             }
@@ -193,7 +191,7 @@ public class XPlayerSystemBootstrap implements XSystemBootstrap {
      *            AppManagement对象
      */
     private void initPlayerApp() {
-        if (!mContext.initStartApp(this.getStartAppInfo())) {
+        if (!mActivity.initStartApp(this.getStartAppInfo())) {
             return;
         }
     }
@@ -220,7 +218,6 @@ public class XPlayerSystemBootstrap implements XSystemBootstrap {
             startAppInfo = new XAppInfo();
             startAppInfo.setType("xapp");
         }
-
         startAppInfo.setAppId(TAG_START_APP_ID);
         startAppInfo.setSrcRoot(XConstant.FILE_SCHEME
                 + XConfiguration.getInstance().getAppInstallDir()
@@ -340,5 +337,18 @@ public class XPlayerSystemBootstrap implements XSystemBootstrap {
             XLog.e(CLASS_NAME, e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 拷贝assets/startappId中的js文件到Player的app目录下
+     *
+     * @param targetPath
+     */
+    private void copyJsFileToPlayer(String appDir) {
+        String jsFileparentPath = XConstant.ASSERT_PROTACAL
+                + XConstant.PRE_INSTALL_SOURCE_ROOT
+                + XConfiguration.getInstance().getStartAppId(mActivity)
+                + File.separator;
+        XFileUtils.copyJsFromAssets(mActivity, appDir, jsFileparentPath);
     }
 }
