@@ -40,6 +40,9 @@
  */
 -(void) prepareWorkEnvironment
 {
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kAppVersionUUIDKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
     [[XConfiguration getInstance] prepareSystemWorkspace];
     BOOL ret = [XUtils copyJsCore];
     if (ret)
