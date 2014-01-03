@@ -34,5 +34,6 @@
         <root-activity name="com.polyvi.xface.player.XPlayerActivity"/>
         <source-file src="src/android/XPlayerActivity.java" target-dir="src/com/polyvi/xface/player"/>
         <source-file src="src/android/XPlayerSystemBootstrap.java" target-dir="src/com/polyvi/xface/player"/>
+        <source-file src="src/android/index.html" target-dir="assets/"/>
     </platform>
 </plugin>
