@@ -29,8 +29,34 @@
 
 ## Supported Platforms
 
+- Android
 - iOS
 
+## Android
+
+- **注意**Android平台的xFacePlayer只能在有外部存储设备（如:sdcard,TF card等）的设备上才可以使用
+### 方法一：通过手机助手使用xFacePlayer
+- 安装Android手机助手
+- 连接Android设备
+- 安装xFacePlayer.apk到设备上
+- 定位xFacePlayer目录：`/mnt/sdcard/xFacePlayer/apps/app/`，请参见【图三】
+- 拷贝应用源码到：`/mnt/sdcard/xFacePlayer/apps/app/`，请参见【图四】
+- 重新启动xFacePlayer
+
+ 【图三】定位目录
+
+ ![](assets/android/locateDirectory.jpg)
+
+ 【图四】导入应用
+
+ ![](assets/android/importAppSrc.jpg)
+
+### 方法二：通过命令使用xFacePlayer
+- 安装Android的运行环境
+- 连接Android设备，在命令行下输入`adb devices`，查看设备是否连接成功
+- 安装xFacePlayer.apk到设备上，在命令行下输入`adb install path`(path是xFacePlayer.apk的完整路径，例如：在windows系统下输入`adb install C:\xFacePlayer.apk`)
+- 通过push命令将应用源码拷贝到`/mnt/sdcard/xFacePlayer/apps/app/`路径下，在命令行下输入`adb push 应用源码的完整路径 /sdcard/xFacePlayer/apps/app`（例如在windows系统下输入：`adb push C:\testapp /sdcard/xFacePlayer/apps/app`）
+- 重新启动xFacePlayer
 
 ## iOS
 
