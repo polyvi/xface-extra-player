@@ -44,9 +44,8 @@
 
     [versionLabel setTextColor:[UIColor whiteColor]];
     [versionLabel setBackgroundColor:[UIColor clearColor]];
-    NSString* versionInfo = [NSString stringWithFormat:@"version:%@.%@",
-                             [XUtils getPreferenceForKey:ENGINE_VERSION],
-                             [XUtils getPreferenceForKey:ENGINE_BUILD]];
+    NSString* versionInfo = [NSString stringWithFormat:@"version:%@",
+                             [XUtils getPreferenceForKey:ENGINE_VERSION]];
 
     NSBundle *bundle = [NSBundle bundleForClass:[self class]];
     NSString* bundleId = [NSString stringWithFormat:@"bundleId:%@", [bundle bundleIdentifier]];
