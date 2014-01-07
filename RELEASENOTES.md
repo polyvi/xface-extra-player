@@ -21,3 +21,11 @@
 -->
 
 # Release Notes
+### 1.0.0 Tue Jan 07 2014 15:42:05 GMT+0800 (CST)
+ *  [iOS] Since there is no engine_build preference any more, removed engine_build from version label
+ *  [android]Add user guides for android player
+ *  [android]Add prompt message html file
+ *  [android]Fix player copy js file error
+ *  [iOS] Added user guides for iOS player
+ *  Added releasenotes
+ *  [iOS]每次程序启动的时候清除应用版本号对应的UUID
