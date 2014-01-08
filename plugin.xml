@@ -21,7 +21,7 @@
         <source-file src="src/ios/XFileOperatorFactory+XPlayer.m" />
         <source-file src="src/ios/XSystemBootstrapFactory+XPlayer.m" />
         <source-file src="src/ios/XSystemWorkspaceFactory+XPlayer.m" />
-        <source-file src="src/ios/XVersionLableFactory+XPlayer.m" />
+        <source-file src="src/ios/XVersionLabelFactory+XPlayer.m" />
     </platform>
 
     <!-- wp8 -->

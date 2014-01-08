@@ -21,26 +21,25 @@
 */
 
 //
-//  XVersionLableFactory.m
-//  xFace
+//  XVersionLabelFactory.m
 //
 //
 
-#import <xFace/XVersionLableFactory.h>
+#import <xFace/XVersionLabelFactory.h>
 #import <xFace/XConstants.h>
 #import <xFace/XUtils.h>
 
-#define  VERSION_LABLE_HEIGHT  50
+#define  VERSION_LABEL_HEIGHT  50
 
 #define  FACTOR_X              0.50
 #define  FACTOR_Y              0.50
 
-@implementation XVersionLableFactory (XPlayer)
+@implementation XVersionLabelFactory (XPlayer)
 
 + (id) createWithFrame:(CGRect)frame
 {
     //version label 显示在xface logo的正下方
-    UILabel *versionLabel = [[UILabel alloc] initWithFrame:CGRectMake(FACTOR_X * frame.size.width - 100, FACTOR_Y * frame.size.height + 25, FACTOR_X * frame.size.width + 100, VERSION_LABLE_HEIGHT)];
+    UILabel *versionLabel = [[UILabel alloc] initWithFrame:CGRectMake(FACTOR_X * frame.size.width - 100, FACTOR_Y * frame.size.height + 25, FACTOR_X * frame.size.width + 100, VERSION_LABEL_HEIGHT)];
 
     [versionLabel setTextColor:[UIColor whiteColor]];
     [versionLabel setBackgroundColor:[UIColor clearColor]];
