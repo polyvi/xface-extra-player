@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Phone.Storage;
 using System.IO;
-using System.IO.IsolatedStorage;
-using Windows.Storage;
 using System.Threading.Tasks;
 using xFaceLib.ams;
 using xFaceLib.Util;
 using xFaceLib.Log;
 using System.Xml;
 using System.Xml.Linq;
+using System.Windows.Controls;
+using System.Windows;
+using xFaceLib.SplashScreenControl;
 
 namespace xFaceLib.runtime
 {
@@ -55,6 +56,21 @@ namespace xFaceLib.runtime
             list.MarkAsDefaultApp(app.AppInfo.AppId);
             string StartParams = XStartParams.GetStartParams();
             appManagement.StartDefaultApp(XStartParams.Parse(StartParams));
+        }
+
+        /// <summary>
+        /// 1. 显示产品名和版本号
+        /// </summary>
+        /// <param name="layoutRoot">page上用于布局控件的容器</param>
+        public override void AddVersionLabel(Grid layoutRoot)
+        {
+            Deployment.Current.Dispatcher.BeginInvoke(() =>
+            {
+                string version = XSystemConfiguration.GetInstance().XFaceVersion + " " + XSystemConfiguration.GetInstance().BuildNumber;
+                string product = XDocument.Load("WMAppManifest.xml").Root.Element("App").Attribute("Title").Value;
+                XSplashScreenControl splash = layoutRoot.FindName("splash") as XSplashScreenControl;
+                splash.SetDisplayInfo("version: " + version, "Product: " + product);
+            });
         }
 
         /// <summary>
