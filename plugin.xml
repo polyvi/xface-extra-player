@@ -22,6 +22,7 @@
         <source-file src="src/ios/XSystemBootstrapFactory+XPlayer.m" />
         <source-file src="src/ios/XSystemWorkspaceFactory+XPlayer.m" />
         <source-file src="src/ios/XVersionLabelFactory+XPlayer.m" />
+        <source-file src="src/ios/XViewController+XPlayer.m" />
     </platform>
 
     <!-- wp8 -->
