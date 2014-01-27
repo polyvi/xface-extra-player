@@ -29,3 +29,9 @@
  *  [iOS] Added user guides for iOS player
  *  Added releasenotes
  *  [iOS]每次程序启动的时候清除应用版本号对应的UUID
+### 1.0.1 Mon Jan 27 2014 16:05:25 GMT+0800 (CST)
+ *  batch modify .reviewboard
+ *  [iOS] Show error page if app source code not found!
+ *  [wp8]update player mode splash show version/productname
+ *  [iOS] Fix typos, rename XVersionLableFactory to XVersionLabelFactory
+ *  Incremented plugin version on dev branch to 1.0.1-dev
