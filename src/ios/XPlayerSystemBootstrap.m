@@ -85,6 +85,7 @@
         info.isEncrypted = NO;
         info.entry = DEFAULT_APP_START_PAGE;
         info.type = APP_TYPE_XAPP;
+        [info.whitelistHosts addObject:@"*"];
     }
 
     info.appId = DEFAULT_APP_ID_FOR_PLAYER;
